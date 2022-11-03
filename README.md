@@ -1,6 +1,6 @@
 # mix-n-match
 
-A simple card matching game, developed as part of a Theory of Computer Games class at University of Veliko Tarnovo.
+A simple card matching game, developed as part of a Theory of Computer Games class at the University of Veliko Tarnovo.
 
 # Development
 
@@ -27,6 +27,5 @@ Other card sets (skins) can be added. To this end a two-character directory need
   - `format` - file extension
   - `cardHeight` - an array with card proportions, typically this would be the image heights of each body part
   - `characters` - the number of characters
-  - `licence` (optionally)
 
 Once deployed, this card set can be assessed by adding a question mark and the two-character directory name at the end, e.g. http://mix-n-match.gamej.am/?mr
