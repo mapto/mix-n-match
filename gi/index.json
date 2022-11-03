@@ -1,6 +1,6 @@
 {
     "format": "jpg",
-    "rows": 3,
-    "cols": 3,
+    "cardHeight": [1, 1, 1],
+    "characters": 3,
     "licence": "https://creativecommons.org/licenses/by/4.0/"
 }

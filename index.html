@@ -72,15 +72,19 @@
         return parts.join("");
     }
 
-    var generateSet = function(theme, rows, cols, format) {
+    var generateSet = function(theme, cards, cols, format) {
         var result = ""
-        for (let r = 1; r <= rows; r++) {
+        const sum = cards.reduce(function (tot, nxt) {
+            return tot + nxt
+        }, 0);
+        for (let r = 1; r <= cards.length; r++) {
             var elts = [];
             for (let c = 1; c <= cols; c++) {
                 elts.push(generateCard(theme, r, c, format));
             }
             const shuffled = elts.sort(() => Math.random() - 0.5);
-            const head = ['<div class="swiper" id="row', r, '">', '<div class="swiper-wrapper">'];
+            const height = Math.floor(100*cards[r-1]/sum);
+            const head = ['<div class="swiper" id="row', r, '" style="height:', height, '%">', '<div class="swiper-wrapper">'];
             const tail = ['</div>', '<div class="swiper-button-next"></div>', '<div class="swiper-button-prev"></div>', '</div>'];
             result += head.join("") + elts.join("") + tail.join("");
         }
@@ -97,11 +101,11 @@
     }
     
     var init = function(theme, data) {
-        document.getElementById("canvas").innerHTML = generateSet(theme, data.rows, data.cols, data.format);
+        document.getElementById("canvas").innerHTML = generateSet(theme, data.cardHeight, data.characters, data.format);
         //console.log(document.querySelectorAll(".swiper-slide img"));
 
         var swipers = [];
-        for (let r = 1; r <= data.rows; r++) {
+        for (let r = 1; r <= data.cardHeight.length; r++) {
             var sid = '#row' + r;
             swipers.push(new Swiper(sid, config(sid)))
         }
